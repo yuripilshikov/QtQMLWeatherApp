@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>MapScreen.qml</file>
+        <file>WeatherScreen.qml</file>
+        <file>LoadingScreen.qml</file>
+    </qresource>
+</RCC>
