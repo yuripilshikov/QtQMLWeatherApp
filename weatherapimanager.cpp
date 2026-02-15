@@ -3,6 +3,8 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 
+#include "jsonparser.h"
+
 WeatherAPIManager::WeatherAPIManager(QObject *parent) : QObject(parent)
 {
     m_networkAccessManager = new QNetworkAccessManager(this);
@@ -31,6 +33,7 @@ void WeatherAPIManager::onReplyFinished(QNetworkReply* reply)
     {
         //QByteArray data = reply->readAll();
         QString data = reply->readAll();
+
         emit weatherDataReceived(data);
     }
     else
