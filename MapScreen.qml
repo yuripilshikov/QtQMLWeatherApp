@@ -12,6 +12,7 @@ Item {
     Map {
         id: map
         anchors.fill: parent
+        //anchors.margins: 10
         plugin: Plugin {  // Using OpenStreetMap plugin as an example
             name: "osm"
         }
@@ -36,6 +37,21 @@ Item {
                 _wam.requestWeather(coordinate.latitude, coordinate.longitude)
             }
         }
+    }
+
+    Drawer {
+        id: drawer
+        width: 0.66 * root.width
+        height: root.height
+        MapDrawer{}
+    }
+
+    Button {
+        text: "="
+        onClicked: drawer.open()
+        anchors.top: window.top
+        anchors.left: window.left
+        anchors.margins: 10
     }
 }
 

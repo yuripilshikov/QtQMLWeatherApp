@@ -4,5 +4,6 @@
         <file>MapScreen.qml</file>
         <file>WeatherScreen.qml</file>
         <file>LoadingScreen.qml</file>
+        <file>MapDrawer.qml</file>
     </qresource>
 </RCC>
