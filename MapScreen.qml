@@ -1,8 +1,8 @@
-import QtQuick 2.0
+import QtQuick 2.12
 import QtQuick.Window 2.2
 import QtLocation 5.0
 import QtPositioning 5.0
-import QtQuick.Controls 2.0
+import QtQuick.Controls 2.12
 
 Item {
     id: root
@@ -10,7 +10,7 @@ Item {
     signal coordinatesSent()
 
     Map {
-        id: map
+        id: myWorldMap
         anchors.fill: parent
         //anchors.margins: 10
         plugin: Plugin {  // Using OpenStreetMap plugin as an example
@@ -25,11 +25,11 @@ Item {
         }
 
         MouseArea {
-            anchors.fill: map
+            anchors.fill: myWorldMap
             hoverEnabled: true // Required to get coordinates on hover, not just clicks
 
             // Custom property to store the converted coordinate
-            property var coordinate: map.toCoordinate(Qt.point(mouseX, mouseY))
+            property var coordinate: myWorldMap.toCoordinate(Qt.point(mouseX, mouseY))
 
             onClicked: {
                 console.log("Clicked coordinates:", coordinate.latitude, coordinate.longitude);
@@ -39,18 +39,15 @@ Item {
         }
     }
 
-    Drawer {
-        id: drawer
-        width: 0.66 * root.width
-        height: root.height
-        MapDrawer{}
+    MapDrawer {
+        id: myDrawer
     }
 
     Button {
         text: "="
-        onClicked: drawer.open()
-        anchors.top: window.top
-        anchors.left: window.left
+        onClicked: myDrawer.open()
+        anchors.top: root.top
+        anchors.left: root.left
         anchors.margins: 10
     }
 }
