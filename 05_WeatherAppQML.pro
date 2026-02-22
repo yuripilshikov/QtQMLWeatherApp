@@ -16,7 +16,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         jsonparser.cpp \
         main.cpp \
-        weatherapimanager.cpp
+        weatherapimanager.cpp \
+        weathericonprovider.cpp
 
 RESOURCES += qml.qrc
 
@@ -33,6 +34,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     jsonparser.h \
-    weatherapimanager.h
+    weatherapimanager.h \
+    weathericonprovider.h
 
-DISTFILES +=
+DISTFILES += \
+    README.MD

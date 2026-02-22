@@ -22,6 +22,12 @@ Window {
         // передача полученных данных в weatherScreen
         signal sendWeatherData(string weather)
 
+        // возвращение в экран карты
+        signal returningToMapScreen()
+        onReturningToMapScreen: {
+            stack.pop();
+        }
+
 
     }
 
@@ -47,15 +53,9 @@ Window {
     Connections {
         target: _wam
         onWeatherDataReceived: {
-            //console.log("Weather data received!\n" + weatherData )
-            // сделать что-то с данными...
-
             stack.pop()
             stack.push(weatherScreen)
             stack.sendWeatherData(weatherData)
-
-            //stack.push(weatherScreen)
-            // передать в weather screen данные
         }
     }
 }

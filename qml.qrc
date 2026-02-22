@@ -6,4 +6,13 @@
         <file>LoadingScreen.qml</file>
         <file>MapDrawer.qml</file>
     </qresource>
+    <qresource prefix="/svg">
+        <file>drizzle.svg</file>
+        <file>fog.svg</file>
+        <file>rain.svg</file>
+        <file>rainshower.svg</file>
+        <file>snow.svg</file>
+        <file>sun.svg</file>
+        <file>sun_and_cloud.svg</file>
+    </qresource>
 </RCC>
