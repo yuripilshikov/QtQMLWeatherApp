@@ -9,7 +9,7 @@ class WeatherIconProvider : public QObject
 public:
     explicit WeatherIconProvider(QObject *parent = nullptr);
 
-    Q_INVOKABLE QString showWeatherIcon(int code);
+    Q_INVOKABLE QString getWeatherIcon(QString const& code);
 
 signals:
 

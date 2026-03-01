@@ -7,46 +7,10 @@ WeatherIconProvider::WeatherIconProvider(QObject *parent) : QObject(parent)
 {    
 }
 
-QString WeatherIconProvider::showWeatherIcon(int code)
+QString WeatherIconProvider::getWeatherIcon(const QString &code)
 {
-    //qDebug() << "CODE OF WEATHER: " << code;
-    QString svgpath = "";
-
-    // sun
-    if(code == 0)
-    {
-        svgpath = ":/svg/sun.svg";
-    }
-    else if(code >= 51 && code <= 57)
-    {
-        svgpath = ":/svg/drizzle.svg";
-    }
-    else if(code == 45 || code == 48)
-    {
-        svgpath = ":/svg/fog.svg";
-    }
-    else if(code >= 61 && code <= 65)
-    {
-        svgpath = ":/svg/rain.svg";
-    }
-    else if(code >= 80 && code <= 82)
-    {
-        svgpath = ":/svg/rainshower.svg";
-    }
-    else if(code >= 1 && code <= 3)
-    {
-        svgpath = ":/svg/sun_and_cloud.svg";
-    }
-    else
-    {
-        svgpath = ":/svg/snow.svg";
-    }
-
-    //qDebug() << "CODE OF WEATHER: " << code << " svgpath: " << svgpath;
-
-
-
-    QFile file(svgpath);
+    QString svgPath = QString(":/svg/%1.svg").arg(code);
+    QFile file(svgPath);
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         // cloud with lighting

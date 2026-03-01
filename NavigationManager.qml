@@ -15,9 +15,7 @@ QtObject {
     }
 
     function showWeather(weatherData) {
-        var weatherScreen = stackView.push("WeatherScreen.qml");
-        weatherScreen.weatherData = weatherData;
-        weatherScreen.populateData()
+        var weatherScreen = stackView.push("WeatherScreen.qml", {"weatherData": weatherData});
     }
 
     function goBack() {
