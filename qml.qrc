@@ -5,6 +5,8 @@
         <file>WeatherScreen.qml</file>
         <file>LoadingScreen.qml</file>
         <file>MapDrawer.qml</file>
+        <file>AppModel.qml</file>
+        <file>NavigationManager.qml</file>
     </qresource>
     <qresource prefix="/svg">
         <file>drizzle.svg</file>
@@ -14,5 +16,8 @@
         <file>snow.svg</file>
         <file>sun.svg</file>
         <file>sun_and_cloud.svg</file>
+    </qresource>
+    <qresource prefix="/json">
+        <file>weathercodes.json</file>
     </qresource>
 </RCC>

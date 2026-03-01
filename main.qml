@@ -1,34 +1,48 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
-import QtQuick.Controls 2.0
+import QtQuick.Controls 2.12
 
 Window {
     visible: true
-    width: 600
-    height: 800
-    title: qsTr("Weather data assistant")
+    width: 748
+    height: 1024
+    title: qsTr("Hello World")
+
+    property AppModel appModel: AppModel {}
+    property NavigationManager navigationManager: NavigationManager {
+        stackView: stack
+        mainWindow: this
+    }
+
+    Connections {
+        target: appModel
+        onIsLoadingChanged: {
+            if (appModel.isLoading) navigationManager.showLoading()
+        }
+        onCurrentWeatherDataChanged: {
+            navigationManager.showWeather(appModel.currentWeatherData)
+        }
+    }
+
+    Connections {
+        target: _wam
+        onWeatherDataReceived: {
+            //console.log("Weather data received!")
+            navigationManager.goBack()
+            navigationManager.showWeather(weatherData)
+        }
+        onErrorOccured: {
+            navigationManager.goBack()
+            //errorDialog.text = errorMessage
+            //errorDialog.open()
+            console.log("ERROR!!! " + errorMessage)
+        }
+    }
 
     StackView {
         id: stack
         initialItem: mapScreen
         anchors.fill: parent
-
-        // координаты отправлены -- включаем экран загрузки
-        signal coordsSet()
-        onCoordsSet: {
-            stack.push(loadingScreen)
-        }
-
-        // передача полученных данных в weatherScreen
-        signal sendWeatherData(string weather)
-
-        // возвращение в экран карты
-        signal returningToMapScreen()
-        onReturningToMapScreen: {
-            stack.pop();
-        }
-
-
     }
 
     Component {
@@ -47,15 +61,5 @@ Window {
     Component {
         id: weatherScreen
         WeatherScreen{}
-    }
-
-    // соединения сигнал-слот с weatherapimanager
-    Connections {
-        target: _wam
-        onWeatherDataReceived: {
-            stack.pop()
-            stack.push(weatherScreen)
-            stack.sendWeatherData(weatherData)
-        }
     }
 }

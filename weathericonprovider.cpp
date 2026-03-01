@@ -9,7 +9,7 @@ WeatherIconProvider::WeatherIconProvider(QObject *parent) : QObject(parent)
 
 QString WeatherIconProvider::showWeatherIcon(int code)
 {
-    qDebug() << "CODE OF WEATHER: " << code;
+    //qDebug() << "CODE OF WEATHER: " << code;
     QString svgpath = "";
 
     // sun
@@ -42,7 +42,7 @@ QString WeatherIconProvider::showWeatherIcon(int code)
         svgpath = ":/svg/snow.svg";
     }
 
-    qDebug() << "CODE OF WEATHER: " << code << " svgpath: " << svgpath;
+    //qDebug() << "CODE OF WEATHER: " << code << " svgpath: " << svgpath;
 
 
 
